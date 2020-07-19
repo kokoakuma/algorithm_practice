@@ -16,7 +16,7 @@ def findBiggest(arr):
       biggest_index = i
   return biggest_index
 
-def selectionSort(arr):s
+def selectionSort(arr):
   oldArr = arr[:] # equal to list(arr) & arr.copy()
   newArr = []
   for i in range(0, len(arr)):
