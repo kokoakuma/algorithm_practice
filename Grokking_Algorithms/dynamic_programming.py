@@ -28,6 +28,11 @@ def find_longest_common_subsequence(word_a, word_b):
         table[i][j] = table[i-1][j-1] + 1
       else:
         table[i][j] = max(table[i][j-1], table[i-1][j])
+
+  result = []
+  for i in range(len_a):
+    result.extend(table[i])
+  print(f"Number of longest common subsequence is {max(result)}")
   print(table)
 
 find_longest_common_subsequence('fish','fosh')
