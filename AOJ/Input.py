@@ -34,6 +34,14 @@ str_list = [list(input().split()) for _ in range(N)]
 N = int(input())  # nは入力回数
 imt_list = [list(map(int, input().split())) for _ in range(N)]
 
+
+# 高速？
+# １行
+from sys import stdin
+a = stdin.readline().rstrip()
+# 複数行を全て読み込む
+a = stdin.read()
+
 ### 番外編
 # 入力値に対して余裕のある値を使用する
 maxv = -float('inf') # 負の無限大
