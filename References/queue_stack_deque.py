@@ -1,5 +1,5 @@
 from collections import deque
-# 両端した操作しない場合はdequeが高速
+# 両端しか操作しない場合はdequeが高速
 # 途中の値も操作するならリストの方が高速
 
 # queue

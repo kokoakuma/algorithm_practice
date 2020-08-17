@@ -2,6 +2,14 @@
 s = input()
 s = int(input()) # 数字
 
+### １つの文字列を分割してリストに入れる
+a = list(input())
+# ex
+a.sort()
+a.sort(reverse=True)
+a = sorted(a)
+a = sorted(a, reverse=True)
+
 ### １行に複数 ex) aa bb cc
 a,b,c = input().split()
 a,b,c = map(int, input().split())
