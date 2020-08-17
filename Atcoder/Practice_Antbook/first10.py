@@ -70,3 +70,41 @@ while True:
   A = [i / 2 for i in A]
   counter += 1
 print(str(counter))
+
+#ABC087 B
+# 500 円玉を AA 枚、100 円玉を BB 枚、50 円玉を CC 枚持っています。
+# これらの硬貨の中から何枚かを選び、合計金額をちょうど XX 円にする方法は
+# 何通りあるでしょうか？
+
+
+A = int(input())
+B = int(input())
+C = int(input())
+X = int(input())
+
+answer = 0
+for i in range(A+1):
+  for j in range(B+1):
+    for k in range(C+1):
+      total = 500 * i + 100 * j + 50 * k
+      if total == X:
+        answer += 1
+print(str(answer))
+
+# ARC004 A
+# 平面上にN個の点があり、それぞれ0からN−1までの番号が付けられており、
+# それぞれの点についてx座標とy座標が与えられています。
+# そのN点のうち2点を選び結んで得られる線分のうち、最も長くなる線分の長さを求めてください。
+import math
+N = int(input())
+A = [list(map(int, input().split())) for _ in range(N)]
+
+biggest_e = 0
+for i in range(N):
+  for j in range(i+1, N):
+    E = math.sqrt((A[i][0] -  a[j][0])**2 + (A[i][1] - A[j][1])**2)
+    if E > biggest_e:
+      biggest_e = E
+print(f"{biggest_e:.6f}")
+
+# 4問目終了
