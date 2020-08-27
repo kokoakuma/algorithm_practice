@@ -4,11 +4,6 @@ s = int(input()) # 数字
 
 ### １つの文字列を分割してリストに入れる
 a = list(input())
-# ex
-a.sort()
-a.sort(reverse=True)
-a = sorted(a)
-a = sorted(a, reverse=True)
 
 ### １行に複数 ex) aa bb cc
 a,b,c = input().split()
@@ -54,3 +49,21 @@ a = stdin.read()
 # 入力値に対して余裕のある値を使用する
 maxv = -float('inf') # 負の無限大
 minv = float('inf') # 正の無限大
+
+
+
+### ソート & 並び替え
+a.sort()
+a.sort(reverse=True)
+a = sorted(a)
+a = sorted(a, reverse=True)
+
+a.reverse()
+reversed(a)
+
+### 文字列の並び替え
+list(a)
+reversed(a)
+''.join(a)
+# or
+a[::-1] # :: →最初から最後まで、-1 →ステップがマイナス方向に1ずつ

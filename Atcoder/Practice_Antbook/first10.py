@@ -236,3 +236,91 @@ for a in range(1,N+1):
 
 print(f"{r10000} {r5000} {r1000}")
 
+# ABC049 C
+# 英小文字からなる文字列Sが与えられます。Tが空文字列である状態から始め、
+# 以下の操作を好きな回数繰り返すことでS=Tとすることができるか判定してください。
+# Tの末尾にdream dreamer erase eraser のいずれかを追加する。
+
+A = input()
+A = A[::-1]
+divide = [i[::-1] for i  in ["dream", "dreamer", "erase", "eraser"]]
+
+flag = 1
+while flag and A:
+  flag = 0
+  for word in divide:
+    if A.startswith(word):
+      A = A[len(word):]
+      flag = 1
+
+if len(A) == 0:
+  print('YES')
+else:
+  print('NO')
+
+
+#ABC059 C
+# 長さNの数列がありi番目の数はaiです。
+# あなたは1回の操作でどれか1つの項の値を1だけ増やすか減らすことができます。
+# 以下の条件を満たすために必要な操作回数の最小値を求めてください。
+# すべてのi(1≦i≦n)に対し、第1項から第i項までの和は0でない
+# すべてのi(1≦i≦n−1)に対し、i項までの和とi+1項までの和の符号が異なる
+
+N = int(input())
+A = list(map(int, input().split()))
+B = A[:]
+
+# evenがプラスの時
+sum_even = 0
+ans_even = 0
+
+for i in range(N):
+  sum_even += A[i]
+  if i % 2 == 0: # 偶数
+    if sum_even <= 0: # 0以下
+      ans_even += abs(sum_even) + 1 # プラスにする（数字分+1）
+      sum_even += abs(sum_even) + 1 # プラスにする（数字分+1）
+  else: # 奇数
+    if sum_even >= 0: # 0以上
+      ans_even += abs(sum_even) + 1 # マイナスにする（数字分+1）
+      sum_even -= abs(sum_even) + 1 # マイナスにする（数字分+1）
+
+# oddがプラスの時
+sum_odd = 0
+ans_odd = 0
+for i in range(N):
+  sum_odd += A[i]
+  if i % 2 == 1:
+    if sum_odd <= 0:
+      ans_odd += abs(sum_odd) + 1
+      sum_odd += abs(sum_odd) + 1
+  else:
+    if sum_odd >= 0:
+      ans_odd += abs(sum_odd) + 1
+      sum_odd -= abs(sum_odd) + 1
+
+answer = min(ans_even, ans_odd)
+print(str(answer))
+
+# ABC076 B
+# square1001 は、電光掲示板に整数1が表示されているのを見ました。
+# 彼は、電光掲示板に対して、以下の操作 A, 操作 B をすることができます。
+# 操作 A： 電光掲示板に表示する整数を「今の電光掲示板の整数を2倍にしたもの」に変える。
+# 操作 B： 電光掲示板に表示する整数を「今の電光掲示板の整数にKを足したもの」に変える。
+# square1001 は、操作 A, 操作 B 合計でN回 行わなければなりません。
+# そのとき、N回の操作後の、電光掲示板に書かれている整数として考えられる最小の値を求めなさい。
+
+N = int(input())
+K = int(input())
+
+start = 1
+
+for i in range(N):
+  start = min(start * 2, start + K)
+
+print(str(start))
+
+
+
+
+
