@@ -4,7 +4,7 @@ D, T, S = list(map(int, input().split()))
 
 distance = T * S
 
-if D > distance:
+if D <= distance:
   print('Yes')
 else:
   print('No')

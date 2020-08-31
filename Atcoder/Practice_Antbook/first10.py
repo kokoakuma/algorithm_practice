@@ -320,6 +320,32 @@ for i in range(N):
 
 print(str(start))
 
+# ARC089 C
+# シカのAtCoDeerくんは二次元平面上で旅行をしようとしています。 AtCoDeerくんの旅行プランでは、
+# 時刻 0に 点(0,0)を出発し、1以上N以下の各 iに対し、時刻tiに 点 (xi,yi)を訪れる予定です。
+# AtCoDeerくんが時刻tに 点 (x,y)にいる時、 時刻 t+1には 点 (x+1,y), (x−1,y), (x,y+1),(x,y−1)のうちいずれかに存在することができます。
+#  その場にとどまることは出来ないことに注意してください。 AtCoDeerくんの旅行プランが実行可能かどうか判定してください。
+
+N = int(input())
+A = [[0,0,0]]
+for i in range(N):
+  A.append(list(map(int, input().split())))
+
+flag = True
+for i in range(N):
+  if not flag:
+    break
+  time = int(A[i+1][0]) - int(A[i][0])
+  dist = abs(A[i+1][1] - A[i][1]) + abs(A[i+1][2] - A[i][2]) # x2-x1 + y2-y1
+  if time < dist:
+    flag = False
+  elif time % 2 != dist % 2:
+    flag = False
+
+if flag:
+  print('Yes')
+else:
+  print('No')
 
 
 
