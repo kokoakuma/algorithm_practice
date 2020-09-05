@@ -32,3 +32,40 @@ for i in range(2**(a_len-1)):
   a_tmp = map(int, a_tmp.split('+'))
   answer += sum(a_tmp)
 print(str(answer))
+
+#ATC001 A 深さ優先探索
+
+from collections import deque
+
+H, W = list(map(int, input().split()))
+D =[]
+Q = deque()
+visited = [[0]*W for i in range(H)]
+
+dx = [1,0,-1,0]
+dy = [0,-1,0,1]
+
+for y in range(H):
+  C = input()
+  if 's' in C:
+    sx = C.index('s')
+    sy = y
+    Q.append((sx, sy))
+    visited[sy][sx] = 1
+  if 'g' in C:
+    gx = C.index('g')
+    gy = y
+  D.append(C)
+
+while Q:
+  x,y = Q.popleft()
+  for i in range(4):
+    nx = x+dx[i]
+    ny = y+dy[i]
+    if 0<=nx<=W-1 and 0<=ny<=H-1 and D[ny][nx] != '#' and visited[ny][nx] == 0:
+      Q.append((nx, ny))
+      visited[ny][nx] = 1
+if visited[gy][gx] == 1:
+  print('Yes')
+else:
+  print('No')
