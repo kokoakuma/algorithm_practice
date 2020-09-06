@@ -69,3 +69,33 @@ if visited[gy][gx] == 1:
   print('Yes')
 else:
   print('No')
+
+
+# ARC031 B
+# 深さ優先探索
+import copy
+
+A = [list(input()) for _ in range(10)]
+dx = [1,0,-1,0]
+dy = [0,-1,0,1]
+H=W=10
+
+def DFS(x,y):
+  B[y][x] = 'x'
+  for i in range(4):
+    nx = x + dx[i]
+    ny = y + dy[i]
+    if 0 <= nx <= W-1 and 0 <= ny <= H-1 and B[ny][nx] != 'x':
+      DFS(nx,ny)
+
+for y in range(H):
+  for x in range(W):
+    B = copy.deepcopy(A)
+    DFS(x,y)
+    for i in range(H):
+      if 'o' in B[i]:
+        break
+    else: # ifに当てはまらず、breakしなかった
+      print('YES')
+      exit()
+print('NO')
