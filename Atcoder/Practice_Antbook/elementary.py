@@ -99,3 +99,62 @@ for y in range(H):
       print('YES')
       exit()
 print('NO')
+
+# ARC037 B
+# バウムテストとは、被験者に「木」の絵を描かせることで被験者の心理状態を読み取る心理検査である。
+# この検査を受けた高橋君は、N個の頂点とM本の辺からなる無向グラフを描いた。
+# このグラフの連結成分のうち木であるようなもの、すなわち閉路を持たないものの個数を求めよ
+
+N, M = map(int,input().split())
+edges = [[] for _ in range(N)]
+flag = [0] * N
+ 
+for _ in range(M):
+    u, v = map(int,input().split())
+    edges[u-1].append(v-1)
+    edges[v-1].append(u-1)
+ 
+def dfs(x, parent):
+    if flag[x]:
+        return 0
+    flag[x] = 1
+    ret = 1
+    for u in edges[x]:
+        if u != parent:
+            ret = min(ret, dfs(u, x))
+    return ret
+ 
+ans = 0
+ 
+for i in range(N):
+    ans += dfs(i, -1)
+ 
+print(ans)
+
+N,M = map(int, input().split())
+edges = [[] for _ in range(N)] # グラフを保存する
+flag = [0] * N # 検索済みがどうかを保存する
+
+for _ in range(M):
+  u, v = map(int, input().split())
+  edges[u-1].append(v-1)
+  edges[v-1].append(u-1)
+
+def dfs(x, parent):
+  if flag[x]:
+    return 0
+  flag[x] = 1 # フラッグを検索済みに更新する
+  ret = 1
+  for u in edges[x]:
+    if u != parent:
+      ret = min(ret, dfs(u, x))
+  return ret
+
+ans = 0
+for i in range(N):
+  ans += dfs(i, -1)
+
+print(ans)
+
+
+

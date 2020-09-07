@@ -14,6 +14,8 @@ def merge(A, left, mid, right):
   i = 0
   j = 0
   for k in range(left, right): # それぞれleftからrightまでしか担当しない→直接Aを書き換えても問題ない
+    global counter
+    counter += 1
     if L[i] <= R[j]:
       A[k] = L[i]
       i += 1
@@ -31,3 +33,12 @@ def mergeSort(A, left, right):
 li = [i for i in reversed(range(100))]
 mergeSort(li, 0, 100)
 print(li)
+
+
+N = int(input())
+A = list(map(int, input().split()))
+counter = 0
+mergeSort(A, 0, N)
+A = map(str, A)
+print(' '.join(A))
+print(str(counter))
