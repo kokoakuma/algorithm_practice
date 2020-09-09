@@ -67,3 +67,7 @@ reversed(a)
 ''.join(a)
 # or
 a[::-1] # :: →最初から最後まで、-1 →ステップがマイナス方向に1ずつ
+
+### 小数点の計算
+from decimal import Decimal
+A = Decimal('1.111')
