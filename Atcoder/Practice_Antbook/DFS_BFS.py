@@ -1,37 +1,3 @@
-# ABC051 B
-# 2つの整数K,Sが与えられます。3つの変数X,Y,Zがあり、
-# 0≦X,Y,Z≦Kを満たす整数の値を取ります。X+Y+Z=Sを満たすX,Y,Zへの値の割り当ては何通りありますか。
-
-K, S = list(map(int, input().split()))
-
-answer = 0
-for i in range(K+1):
-  for j in range(K+1):
-    if 0 <= S - (i + j) <= K:
-      answer += 1
-
-print(answer)
-
-
-#ABC045 C
-A = input()
-a_len = len(A)
-
-answer = 0
-for i in range(2**(a_len-1)):
-  a_tmp = A
-  bin_index = format(i, 'b').zfill(a_len-1)
-  for j in range(a_len-1):
-    a_tmp = list(a_tmp)
-    if bin_index[j] == '1':
-      a_tmp.insert(2*j+1, '+')
-    else:
-      a_tmp.insert(2*j+1, '#')
-    a_tmp = ''.join(a_tmp)
-  a_tmp = a_tmp.replace('#', '')
-  a_tmp = map(int, a_tmp.split('+'))
-  answer += sum(a_tmp)
-print(str(answer))
 
 #ATC001 A 深さ優先探索
 
@@ -73,6 +39,12 @@ else:
 
 # ARC031 B
 # 深さ優先探索
+# １マスを陸地にすることで一繋がりの陸地にできるか？
+# 全マスに対して、そのマスを陸地にした場合において、
+# 陸地を探索＆陸地を海に変換する処理を行った時、
+# 全て海になっているか？
+# →陸地が残っているということは、陸がどこかで途切れているということ
+
 import copy
 
 A = [list(input()) for _ in range(10)]
@@ -157,43 +129,9 @@ for i in range(N):
 print(ans)
 
 #ABC007 C
-dx = (0,1,0,-1)
-dy = (1,0,-1,0)
-
-R, C = map(int, input().split())
-sy, sx = map(lambda x: int(x)-1, input().split())
-gy, gx = map(lambda x: int(x)-1, input().split())
-
-S=[input() for i in range(R)]
-S_check = [[False]*C for _ in range(R)]
-
-Q = []
-Q.append((sy, sx, 0))
-
-is_reached = False
- 
-while Q:
-    if is_reached:
-        break
-    current = Q.pop(0)
-    for i in range(4):
-        next_pos = (current[0] + dy[i], current[1] + dx[i])
-        step = current[2]+1
-        
-        if next_pos[0] < 0 or next_pos[0] > R-1 or next_pos[1] < 0 or next_pos[1] > C-1:
-            continue
-        if S[next_pos[0]][next_pos[1]] == "#":
-            continue
-        if S_check[next_pos[0]][next_pos[1]]:
-            continue
-        if next_pos[0] == gy and next_pos[1] == gx:
-            print(step)
-            is_reached = True
-            break
-        if S[next_pos[0]][next_pos[1]] == ".":
-            S_check[next_pos[0]][next_pos[1]] = True
-            Q.append((next_pos[0], next_pos[1], step))
- 
+# 一般的なBFS
+# 迷路の最短ルートを求める
+# 一つ進む毎にstepを1増やす
 
 from collections import deque
 
