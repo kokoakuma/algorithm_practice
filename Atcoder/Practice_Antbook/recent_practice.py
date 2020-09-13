@@ -173,3 +173,48 @@ cos_hm = math.cos(rad_hm)
 a_double = hour_len ** 2 + minute_len ** 2 - (2 * hour_len * minute_len * cos_hm)
 ans = math.sqrt(a_double)
 print( f"{ans:.20f}" )
+
+#ABC167 B
+
+A, B, C, K = list(map(int, input().split()))
+
+ans = 0
+if A > K:
+  print(K)
+elif A == K:
+  print(A)
+elif A + B >= K:
+  print(A)
+else:
+  print(A - (K - A - B))
+
+
+# ABC166 B
+N, K = list(map(int, input().split()))
+
+table = [0] * N
+for _ in range(K):
+  num = int(input())
+  have_list = list(map(int, input().split()))
+  for child in have_list:
+    table[child-1] += 1
+
+print(str(table.count(0)))
+
+# ABC166 C
+N, M = list(map(int, input().split()))
+list_h = list(map(int, input().split()))
+table = [1] * N
+
+for i in range(M):
+  A, B = list(map(int, input().split()))
+  if list_h[B-1] < list_h[A-1]:
+    table[B-1] = 0
+  elif list_h[A-1] < list_h[B-1]:
+    table[A-1] = 0
+  else:
+    table[A-1] = 0
+    table[B-1] = 0
+
+print(str(sum(table)))
+
