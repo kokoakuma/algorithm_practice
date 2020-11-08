@@ -99,7 +99,7 @@ elif num_len == 2:
   if ab % 8 == 0 or ba % 8 == 0:
     ans = True
 
-# 三桁以上の場合、全ての組み合わせを試す。 最大でも30個 * 30個 * 30個
+# 三桁以上の場合、全ての組み合わせを試す。 最大でも27個 * 27個 * 27個
 else:
   for first in range(num_len-2):
     for second in range(first+1, num_len-1):
@@ -109,7 +109,7 @@ else:
         t = str(num_list[third])
         # 3つの数字の並べ方（６通り）を全て試す
         x1 = int(f + s + t)
-        x2 = int(f + s + t)
+        x2 = int(f + t + s)
         x3 = int(s + f + t)
         x4 = int(s + t + f)
         x5 = int(t + f + s)
