@@ -218,3 +218,35 @@ for i in range(M):
 
 print(str(sum(table)))
 
+
+# ABC165 B
+import math
+N = int(input())
+A = 100
+counter = 0
+
+while A < N:
+  tmp = A + (A // 100)
+  A = math.floor(tmp)
+  counter += 1
+
+print(str(counter))
+
+# ABC164 B
+x1, x2, y1, y2 = list(map(int, input().split()))
+is_t_winner = False
+
+while True:
+  y1 -= x2
+  if y1 <= 0:
+    is_t_winner = True
+    break
+  x1 -= y2
+  if x1 <= 0:
+    break
+
+if is_t_winner:
+  print('Yes')
+else:
+  print('No')
+
