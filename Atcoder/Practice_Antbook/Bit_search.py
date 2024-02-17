@@ -27,3 +27,29 @@ for i in range(2 ** len_sample_list):
         if (i >> j) & 1:
             out_list.append(sample_list[j])
     print(out_list)
+
+#ABC197 C
+
+n = int(input())
+nums = list(map(int, input().split()))
+ans = float('inf')
+# 逐一処理をする
+# 間に合わない時はpypyを使用する
+for i in range(0, 2 ** n-1):
+  _or = nums[0]
+  _xor = []
+  for j in range(n-1):
+    if (i >> j) & 1:
+      _xor.append(_or)
+      _or = nums[j+1]
+    else:
+      _or |= nums[j+1]
+  _xor.append(_or)
+
+  res = 0
+  for k in _xor:
+    res ^= k
+  
+  ans = min(ans, res)
+
+print(ans)
